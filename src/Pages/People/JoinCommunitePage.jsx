@@ -1,19 +1,34 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const JoinCommunitePage = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        console.log(data)
+    }
+
     return (
         <div className="hero min-h-screen">
-            <div className="hero-content z-0">
+            <div className="hero-content z-10">
                 <div className="card bg-base-100 w-full max-w-2xl px-5 py-10 shadow-2xl">
                     <h1 className='text-2xl text-center text-green-500 font-semibold'>GPC Volunteer Joining  Form...</h1>
-                    <form className="card-body gap-5 grid grid-cols-12">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body gap-5 grid grid-cols-12" >
                         {/* name  */}
                         <div className="form-control col-span-12 md:col-span-6">
                             <label className="label block text-sm font-medium text-gray-700 mb-1">
                                 <span className="label-text">Name</span>
                                 <span className="text-red-500">*</span>
                             </label>
-                            <input type="text" placeholder="Write your name..." className="input input-bordered w-full" required />
+                            <input {...register("name", { required: true })} type="text" placeholder="Write your name..." className="input input-bordered w-full" />
+                            {errors.name && (
+                                <p className="text-red-500 text-sm mt-1">Write your name*</p>
+                            )}
                         </div>
                         {/* mobile number */}
                         <div className="form-control col-span-12 md:col-span-6">
@@ -21,7 +36,10 @@ const JoinCommunitePage = () => {
                                 <span className="label-text">Mobile Number</span>
                                 <span className="text-red-500">*</span>
                             </label>
-                            <input type="number" placeholder="Write your mobile number..." className="input input-bordered w-full" required />
+                            <input {...register("mobileNumber", { required: true, min: 11, max: 11 })} type="number" placeholder="Write your mobile number..." className="input input-bordered w-full" />
+                            {errors.mobileNumber && (
+                                <p className="text-red-500 text-sm mt-1">Write your mobile number*</p>
+                            )}
                         </div>
                         {/* date of birth  */}
                         <div className="form-control col-span-12 md:col-span-6">
@@ -29,7 +47,10 @@ const JoinCommunitePage = () => {
                                 <span className="label-text">Date of Birth</span>
                                 <span className="text-red-500">*</span>
                             </label>
-                            <input type="date" placeholder="" className="input input-bordered w-full" required />
+                            <input {...register("birthDate", { required: true })} type="date" placeholder="" className="input input-bordered w-full" />
+                            {errors.birthDate && (
+                                <p className="text-red-500 text-sm mt-1">Select your date of birth*</p>
+                            )}
                         </div>
                         {/* occupation */}
                         <div className="form-control col-span-12 md:col-span-6">
@@ -37,7 +58,7 @@ const JoinCommunitePage = () => {
                                 Your Occupation <span className="text-red-500">*</span>
                             </label>
                             <select
-                                // {...register("occupation", { required: "Occupation is required" })}
+                                {...register("occupation", { required: true })}
                                 className="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
                             >
                                 <option value="">Select an option</option>
@@ -48,9 +69,9 @@ const JoinCommunitePage = () => {
                                 <option value="Housewife">Housewife</option>
                                 <option value="Others">Others</option>
                             </select>
-                            {/* {error && (
-                                <p className="text-red-500 text-sm mt-1">{error.message}</p>
-                            )} */}
+                            {errors.occupation && (
+                                <p className="text-red-500 text-sm mt-1">Select you occupation*</p>
+                            )}
                         </div>
                         {/* blood group */}
                         <div className='form-control col-span-12 md:col-span-6'>
@@ -58,7 +79,7 @@ const JoinCommunitePage = () => {
                                 Blood Group <span className="text-red-500">*</span>
                             </label>
                             <select
-                                // {...register('bloodGroup', { required: 'Please select your blood group' })}
+                                {...register('bloodGroup', { required: true })}
                                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             >
                                 <option value="">-- Select Blood Group --</option>
@@ -72,7 +93,7 @@ const JoinCommunitePage = () => {
                                 <option value="AB+">AB+</option>
                                 <option value="AB-">AB-</option>
                             </select>
-                            {/* {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>} */}
+                            {errors.bloodGroup && <p className="text-red-500 text-xs mt-1">Select your blood group*</p>}
                         </div>
                         {/* location  */}
                         <div className="form-control col-span-12 md:col-span-6">
@@ -81,24 +102,25 @@ const JoinCommunitePage = () => {
                                 </span>
                                 <span className="text-red-500">*</span>
                             </label>
-                            <input type="password" placeholder="(Area + District Name)" className="input input-bordered w-full" required />
+                            <input {...register("location", { required: true })} type="text" placeholder="(Area + District Name)" className="input input-bordered w-full" />
+                            {errors.location && <p className="text-red-500 text-xs mt-1">Add your location*</p>}
                         </div>
                         {/* opinion */}
                         <div className='form-control col-span-12'>
                             <label className=" text-sm font-medium text-gray-700 mb-1">
-                                Share your opinion or thoughts. Why you join GPC community?
+                                Share your opinion or thoughts. Why will you join GPC community?
                             </label>
                             <textarea
-                                // {...register('opinion')}
+                                {...register('opinion', { required: true })}
                                 rows={4}
                                 placeholder="Write your opinion here..."
                                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
                             ></textarea>
-                            {/* {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>} */}
+                            {errors.opinion && <p className="text-red-500 text-xs mt-1">This field is required*</p>}
                         </div>
-                        
+
                         <div className="form-control">
-                            <button className="btn btn-primary">Submit</button>
+                            <button type='submit' className="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>

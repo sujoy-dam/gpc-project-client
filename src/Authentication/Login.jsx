@@ -47,7 +47,7 @@ const Login = () => {
                             </div>
                         </form>
                         <div>
-                            <h1 className='text-center -mt-4'>Don't have account?<span className='ml-4 font-bold text-primary hover:underline'><Link to="/sign-up">Sign Up</Link></span></h1>
+                            <h1 className='text-center -mt-4'>Don't have account?<span className='ml-4 font-bold text-primary hover:underline uppercase'><Link to="/sign-up">Sign Up</Link></span></h1>
                         </div>
                     </div>
                 </div>

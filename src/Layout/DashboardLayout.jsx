@@ -10,7 +10,7 @@ import { BsFillTrophyFill } from "react-icons/bs";
 import { FaBook } from "react-icons/fa";
 
 const DashboardLayout = () => {
-    const people = true;
+    // const people = true;
     const member = false;
     const { isOpen, setIsOpen } = useContext(AuthContext)
     return (

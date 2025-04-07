@@ -13,7 +13,7 @@ const MainLayout = () => {
 
     return (
         <div className='max-h-screen'>
-            <header className='bg-base-100 fixed w-full top-0 z-10 p-4'>
+            <header className='bg-base-100 fixed w-full top-0 z-20 p-4'>
                 <div className='flex justify-end items-center container mx-auto '>
                     <div className='space-x-4 mr-5'>
                         <Link to="/login">
