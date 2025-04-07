@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+import { IoEye, IoEyeOff } from 'react-icons/io5';
+import { MdEmail } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+
+const Login = () => {
+    const [isShow, setIsShow] = useState(false)
+    return (
+        <div className='min-h-screen bg-login-img bg-cover bg-center'>
+            <div className="hero min-h-screen">
+                <div className="hero-content">
+                    <div className="card bg-slate-800 backdrop-blur-md text-white border-slate-400 backdrop-filter w-full max-w-sm bg-opacity-30 shadow-2xl py-5">
+                        <h1 className='text-3xl font-bold text-center text-gray-200'>Welcome</h1>
+                        <form className="card-body space-y-5">
+                            <div className="form-control space-y-2">
+                                <label className="label">
+                                    <span className="label-text text-lg font-bold">Email</span>
+                                </label>
+                                <div className='flex relative'>
+                                    <input type="email" placeholder="Write your email..." className="input border-0 border-b-4 border-l-2 w-72 focus:border-gray-300 focus:border-b-2 appearance-none bg-transparent focus:outline-none  focus:border-l-0 placeholder:font-bold" required />
+                                    <MdEmail size={18} className='-translate-x-5 translate-y-3' />
+                                </div>
+
+                            </div>
+                            <div className="form-control space-y-2">
+                                <label className="label">
+                                    <span className="label-text text-lg  font-bold">Password</span>
+                                </label>
+                                <div className='flex relative'>
+                                    <input type={`${isShow?"text":"password"}`} placeholder="Type your password..." className="input border-0 border-b-4 border-l-2 w-72 focus:border-gray-300 focus:border-l-0 appearance-none bg-transparent focus:outline-none placeholder:font-bold focus:border-b-2" required />
+                                    <div className=''>
+                                        {
+                                            isShow ? <span onClick={()=>setIsShow(!isShow)}>
+                                                <IoEye size={18} className='-translate-x-5 translate-y-3' />
+                                            </span> : <span onClick={()=>setIsShow(!isShow)}>
+                                                <IoEyeOff size={18} className='-translate-x-5 translate-y-3' />
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                </label>
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-outline w-full">Login</button>
+                            </div>
+                        </form>
+                        <div>
+                            <h1 className='text-center -mt-4'>Don't have account?<span className='ml-4 font-bold text-primary hover:underline'><Link to="/sign-up">Sign Up</Link></span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Login;
