@@ -12,6 +12,9 @@ import MyProfile from "../Pages/Member/MyProfile";
 import PendingCase from "../Pages/Member/PendingCase";
 import Blogs from "../Pages/People/Blogs"
 import RestCase from "../Pages/Member/RestCase";
+import AdminDashboard from "../Pages/Admin/AdminDashboard";
+import AdminDashboardComponent from "../components/Dashboard/AdminDashboard/AdminDashboardComponent";
+import MemberRequest from "../Pages/Admin/MemberRequest";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -44,6 +47,15 @@ export const router = createBrowserRouter([
                     {
                         path:"rest-case",
                         element:<RestCase/>
+                    },
+                    // admin routes 
+                    {
+                        path:"admin-dashboard",
+                        element:<AdminDashboard/>
+                    },
+                    {
+                        path:"member-request",
+                        element:<MemberRequest/>
                     }
                 ]
                 

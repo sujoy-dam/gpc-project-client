@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true)
     useEffect(() => {
         let handler = () => {
             setIsOpen(false)
