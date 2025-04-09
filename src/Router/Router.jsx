@@ -15,59 +15,89 @@ import RestCase from "../Pages/Member/RestCase";
 import AdminDashboard from "../Pages/Admin/AdminDashboard";
 import AdminDashboardComponent from "../components/Dashboard/AdminDashboard/AdminDashboardComponent";
 import MemberRequest from "../Pages/Admin/MemberRequest";
+import ManageUsers from "../Pages/Admin/ManageUsers";
+import PostMentionableWork from "../Pages/Admin/PostMentionableWork";
+import PostBlogs from "../Pages/Admin/PostBlogs";
+import PostCase from "../Pages/Admin/PostCase";
+import PostAnnounce from "../Pages/Admin/PostAnnounce";
+import NoticeBoard from "../Pages/Member/NoticeBoard";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout/>,
-        children:[
+        element: <MainLayout />,
+        children: [
             {
-                path:"/",
-                element:<DashboardLayout/>,
-                children:[
+                path: "/",
+                element: <DashboardLayout />,
+                children: [
                     {
-                        path:"/",
-                        element:<JoinCommunitePage/>
+                        path: "/",
+                        element: <JoinCommunitePage />
                     },
                     {
-                        path:"mentionable-works",
-                        element:<MentionableWork/>
+                        path: "mentionable-works",
+                        element: <MentionableWork />
                     },
                     {
-                        path:"blogs",
-                        element:<Blogs/>
+                        path: "blogs",
+                        element: <Blogs />
                     },
                     {
-                        path:"my-profile",
-                        element:<MyProfile/>
+                        path: "my-profile",
+                        element: <MyProfile />
                     },
                     {
-                        path:"pending-case",
-                        element:<PendingCase/>
+                        path: "pending-case",
+                        element: <PendingCase />
                     },
                     {
-                        path:"rest-case",
-                        element:<RestCase/>
+                        path: "rest-case",
+                        element: <RestCase />
+                    },
+                    {
+                        path: "notice-board",
+                        element: <NoticeBoard />
                     },
                     // admin routes 
                     {
-                        path:"admin-dashboard",
-                        element:<AdminDashboard/>
+                        path: "admin-dashboard",
+                        element: <AdminDashboard />
                     },
                     {
-                        path:"member-request",
-                        element:<MemberRequest/>
+                        path: "manage-users",
+                        element: <ManageUsers />
+                    },
+                    {
+                        path: "member-request",
+                        element: <MemberRequest />
+                    },
+                    {
+                        path: "post-mentionable-works",
+                        element: <PostMentionableWork />
+                    },
+                    {
+                        path: "post-blog",
+                        element: <PostBlogs />
+                    },
+                    {
+                        path: "post-case",
+                        element: <PostCase />
+                    },
+                    {
+                        path: "add-announcement",
+                        element: <PostAnnounce />
                     }
                 ]
-                
+
             }
         ]
     },
     {
-        path:"login",
-        element:<Login/>
+        path: "login",
+        element: <Login />
     },
     {
-        path:"sign-up",
-        element:<Register/>
+        path: "sign-up",
+        element: <Register />
     }
 ]);
