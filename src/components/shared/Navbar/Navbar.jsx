@@ -12,15 +12,15 @@ const Navbar = () => {
             <div className='container mx-auto flex flex-col gap-4 items-end justify-between md:px-10 p-4 '>
                 <div>
                     {/* <span>Profile</span> */}
-                    <NavLink className="btn btn-success"><CgProfile size={24} /></NavLink>
+                    <NavLink className="btn btn-success text-white"><CgProfile size={24} /></NavLink>
                 </div>
                 <div>
                     {/* <span>Home</span> */}
-                    <NavLink className="btn btn-success"><IoHome size={24} /></NavLink>
+                    <NavLink className="btn btn-success text-white"><IoHome size={24} /></NavLink>
                 </div>
                 <div>
                     {/* <span>About</span> */}
-                    <NavLink className="btn btn-success"><FcAbout size={24} /></NavLink>
+                    <NavLink className="btn btn-success text-white"><FcAbout size={24} /></NavLink>
                 </div>
             </div>
         </div>

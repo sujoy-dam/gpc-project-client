@@ -16,7 +16,7 @@ const JoinCommunitePage = () => {
     return (
         <div className="hero min-h-screen">
             <div className="hero-content z-10">
-                <div className="card bg-base-100 w-full max-w-2xl px-5 py-10 shadow-2xl">
+                <div className="card bg-base-100 w-full max-w-2xl px-5 pt-10 shadow-2xl">
                     <h1 className='text-2xl text-center text-green-500 font-semibold'>GPC Volunteer Joining  Form...</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body gap-5 grid grid-cols-12" >
                         {/* name  */}
@@ -36,7 +36,7 @@ const JoinCommunitePage = () => {
                                 <span className="label-text">Mobile Number</span>
                                 <span className="text-red-500">*</span>
                             </label>
-                            <input {...register("mobileNumber", { required: true, min: 11, max: 11 })} type="number" placeholder="Write your mobile number..." className="input input-bordered w-full" />
+                            <input {...register("mobileNumber", { required: true})} type="number" placeholder="Write your mobile number..." className="input input-bordered w-full" />
                             {errors.mobileNumber && (
                                 <p className="text-red-500 text-sm mt-1">Write your mobile number*</p>
                             )}

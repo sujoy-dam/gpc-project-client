@@ -31,7 +31,7 @@ const DashboardLayout = () => {
                 <nav className='font-semibold'>
 
                     {
-                        status == "member" && <MemberDashboardComponent />
+                        status == "member" && <MemberDashboard />
                     }
                     {
                         status == "admin" && <MemberDashboard />
