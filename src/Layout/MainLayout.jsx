@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import Navbar from '../components/shared/Navbar/Navbar';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { FaBars } from 'react-icons/fa';
 import { IoCloseSharp, IoHome } from 'react-icons/io5';
-import { FcAbout } from 'react-icons/fc';
-import { CgProfile } from 'react-icons/cg';
+import { ToastContainer } from 'react-toastify';
 
 const MainLayout = () => {
-    const { isOpen, setIsOpen, user } = useContext(AuthContext)
+    const { isOpen, setIsOpen, user,handleSignOut } = useContext(AuthContext)
+    console.log(user)
 
 
     return (
@@ -18,7 +18,7 @@ const MainLayout = () => {
                     <div className='space-x-4 mr-5'>
                         {
                             user ? <Link to="/login">
-                                <button className='uppercase font-semibold'>log out</button>
+                                <button onClick={()=>handleSignOut()} className='uppercase font-semibold'>log out</button>
                             </Link>
                                 :
                                 <Link to="/login">
@@ -29,13 +29,14 @@ const MainLayout = () => {
 
 
                     </div>
-                    <button onClick={() => setIsOpen(!isOpen)} className='text-white btn bg-green-800 btn-circle z-30'
+                    <button onClick={() => setIsOpen(!isOpen)} className='text-green-800 outline-2 outline-green-700 z-30'
                     >
                         {
                             isOpen ? <IoCloseSharp size={24} /> : <FaBars size={20} />
                         }
 
                     </button>
+                    <div></div>
                 </div>
             </header>
             <main className='mt-20'>
@@ -44,6 +45,7 @@ const MainLayout = () => {
             <nav className='fixed w-full bottom-0'>
                 <Navbar />
             </nav>
+            <ToastContainer />
         </div>
     );
 };

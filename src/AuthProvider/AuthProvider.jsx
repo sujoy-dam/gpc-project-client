@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
             setIsOpen(false)
         }
         document.addEventListener("mousedown", handler)
-    }, [])
+    }, [user])
 
     const handleCreateUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            console.log(currentUser)
             setUser(currentUser)
         })
         return () => {
@@ -41,7 +42,9 @@ const AuthProvider = ({ children }) => {
         handleCreateUser,
         handleSingIn,
         handleUpdateProfile,
-        handleSignOut
+        handleSignOut,
+        user,
+        setUser
     }
     return (
         <AuthContext.Provider value={authInfo}>

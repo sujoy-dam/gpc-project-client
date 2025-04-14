@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 const JoinCommunitePage = () => {
     const {
@@ -9,8 +10,47 @@ const JoinCommunitePage = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data)
+       
+        try {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You want to send member request?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Confirm"
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Confirm",
+                        text: "Member request send successfully",
+                        icon: "success"
+                    });
+                    await fetch("http://localhost:5000/join", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                        // ...
+                    })
+                    .then(res=>res.json())
+                    .then(data=>{
+                        console.log(data)
+                    })
+                }
+            });
+            
+        }
+        catch (error) {
+            console.log(error)
+        }
+        finally {
+            // something
+        }
     }
 
     return (
@@ -36,7 +76,7 @@ const JoinCommunitePage = () => {
                                 <span className="label-text">Mobile Number</span>
                                 <span className="text-red-500">*</span>
                             </label>
-                            <input {...register("mobileNumber", { required: true})} type="number" placeholder="Write your mobile number..." className="input input-bordered w-full" />
+                            <input {...register("mobileNumber", { required: true })} type="number" placeholder="Write your mobile number..." className="input input-bordered w-full" />
                             {errors.mobileNumber && (
                                 <p className="text-red-500 text-sm mt-1">Write your mobile number*</p>
                             )}
