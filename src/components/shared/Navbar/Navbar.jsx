@@ -4,6 +4,7 @@ import { IoHome } from "react-icons/io5";
 import { FcAbout } from "react-icons/fc";
 import { CgProfile } from "react-icons/cg";
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import { FaFacebook } from 'react-icons/fa';
 
 const Navbar = () => {
 
@@ -12,7 +13,7 @@ const Navbar = () => {
             <div className='container mx-auto flex flex-col gap-4 items-end justify-between md:px-10 p-4 '>
                 <div>
                     {/* <span>Profile</span> */}
-                    <NavLink className="btn btn-success text-white"><CgProfile size={24} /></NavLink>
+                    <NavLink className="btn btn-success text-white"><FaFacebook size={24}/></NavLink>
                 </div>
                 <div>
                     {/* <span>Home</span> */}

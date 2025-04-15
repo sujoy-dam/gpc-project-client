@@ -10,7 +10,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
     const navigate = useNavigate()
-    const { handleCreateUser } = useContext(AuthContext)
+    const { handleCreateUser,handleSignOut } = useContext(AuthContext)
     const [isShow, setIsShow] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -22,9 +22,10 @@ const Register = () => {
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
+                handleSignOut()
                 console.log(user)
-                toast.success("Login Successfully")
-                navigate("/")
+                toast.success("Register Successfully")
+                navigate("/login")
                 // ...
             })
             .catch((error) => {

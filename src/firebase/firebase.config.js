@@ -6,7 +6,7 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCOQ115gtu41dEUPvolXCCUSiyli6baT60",
+  apiKey: import.meta.env.VITE_apiKey,
   authDomain: "guardian-of-paws-and-claws.firebaseapp.com",
   projectId: "guardian-of-paws-and-claws",
   storageBucket: "guardian-of-paws-and-claws.firebasestorage.app",
