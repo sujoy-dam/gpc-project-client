@@ -21,6 +21,8 @@ import PostBlogs from "../Pages/Admin/PostBlogs";
 import PostCase from "../Pages/Admin/PostCase";
 import PostAnnounce from "../Pages/Admin/PostAnnounce";
 import NoticeBoard from "../Pages/Member/NoticeBoard";
+import PriveteRoute from "./PriveteRoute";
+import AboutUs from "../Pages/Common/AboutUs";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -44,7 +46,9 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: "my-profile",
-                        element: <MyProfile />
+                        element:<PriveteRoute>
+                             <MyProfile />
+                        </PriveteRoute>
                     },
                     {
                         path: "pending-case",
@@ -99,5 +103,9 @@ export const router = createBrowserRouter([
     {
         path: "sign-up",
         element: <Register />
+    },
+    {
+        path:"about-us",
+        element:<AboutUs/>
     }
 ]);

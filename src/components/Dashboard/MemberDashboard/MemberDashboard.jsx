@@ -12,7 +12,7 @@ const MemberDashboard = () => {
     const status = "admin"
     return (
         <div>
-            <ul>
+            <ul className='sidebar '>
                 <li data-tooltip-id="my-tooltip" data-tooltip-content="My Profile">
                     <NavLink to="/my-profile" className='flex items-center p-4 hover:bg-green-900 cursor-pointer'>
                         <CgProfile size={24}></CgProfile>

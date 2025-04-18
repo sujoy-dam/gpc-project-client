@@ -7,10 +7,11 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { useContext } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
     const navigate = useNavigate()
-    const { handleCreateUser,handleSignOut } = useContext(AuthContext)
+    const { handleCreateUser,handleSignOut, handleGoogleSignIn } = useContext(AuthContext)
     const [isShow, setIsShow] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -35,11 +36,27 @@ const Register = () => {
                 // ..
             })
     };
+    const handleGoogleRegister = ()=>{
+        // alert('click')
+        handleGoogleSignIn()
+        .then((result) => {
+            const user = result.user;
+            console.log(user)
+            navigate("/")
+          }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage)
+            
+            // ...
+          });
+    }
     return (
         <div className='bg-register-img bg-cover bg-no-repeat bg-center min-h-screen'>
             <div className="hero min-h-screen">
                 <div className="hero-content">
-                    <div className="card bg-green-800 text-white border-slate-800 backdrop-filter w-full max-w-sm bg-opacity-30 shadow-2xl py-5">
+                    <div className="card bg-slate-800 text-white border-slate-800 backdrop-filter backdrop-blur-sm w-full max-w-sm bg-opacity-30 shadow-2xl py-5">
                         <h1 className='text-3xl font-bold text-center text-gray-200'>Welcome</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body space-y-3">
                             <div className="form-control space-y-1">
@@ -52,16 +69,6 @@ const Register = () => {
                                         className='-translate-x-5 translate-y-3 text-white' />
                                 </div>
                                 {errors.name && <span className="text-red-500">This field is required</span>}
-                            </div>
-                            <div className="form-control space-y-1">
-                                <label className="label">
-                                    <span className="label-text text-lg font-bold">Photo</span>
-                                </label>
-                                <div className='flex relative'>
-                                    <input type="file" placeholder="Write your email..." className="input border-0 border-b-4 border-l-2 w-72 focus:border-gray-300 focus:border-b-2 appearance-none bg-transparent focus:outline-none  focus:border-l-0 placeholder:font-semibold placeholder:text-white" />
-                                    <IoIosPhotos size={18} className='-translate-x-5 translate-y-3' />
-                                </div>
-
                             </div>
                             <div className="form-control space-y-1">
                                 <label className="label">
@@ -102,6 +109,9 @@ const Register = () => {
                         </form>
                         <div>
                             <h1 className='text-center -mt-4'>Have an account?<span className='ml-4 uppercase font-bold text-primary hover:underline'><Link to="/login">login</Link></span></h1>
+                        </div>
+                        <div className='border-2 text-center'>
+                            <button onClick={()=>handleGoogleRegister()} className='flex items-center mx-auto btn'><FcGoogle size={24} />Sign With Google</button>
                         </div>
                     </div>
                 </div>

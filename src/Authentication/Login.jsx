@@ -30,18 +30,18 @@ const Login = () => {
         <div className='min-h-screen bg-login-img bg-cover bg-center'>
             <div className="hero min-h-screen">
                 <div className="hero-content">
-                    <div className="card bg-slate-800 backdrop-blur-md text-white border-slate-400 backdrop-filter w-full max-w-sm bg-opacity-30 shadow-2xl py-5">
-                        <h1 className='text-3xl font-bold text-center text-gray-200'>Welcome</h1>
+                    <div className="card bg-slate-800 backdrop-blur-sm   text-white border-pink-400 border-2 backdrop-filter w-full max-w-sm bg-opacity-30 shadow-2xl py-5">
+                        <h1 className='text-3xl font-bold text-center text-pink-400'>Welcome</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body space-y-5">
                             <div className="form-control space-y-2">
                                 <label className="label">
-                                    <span className="label-text text-lg font-bold">Email</span>
+                                    <span className="label-text text-lg font-bold italic">Email</span>
                                 </label>
                                 <div className='flex relative'>
                                     <input
                                         {...register("email", { required: true })}
                                         aria-invalid={errors.email ? "true" : "false"}
-                                        type="email" placeholder="Write your email..." className="input border-0 border-b-4 border-l-2 w-72 focus:border-gray-300 focus:border-b-2 appearance-none bg-transparent focus:outline-none  focus:border-l-0 placeholder:font-bold" />
+                                        type="email" placeholder="Write your email..." className="input border-0 border-b-4 border-l-2 w-72 focus:border-pink-300 focus:border-b-2 appearance-none bg-transparent focus:outline-none focus:border-l-0 placeholder:font-semibold" />
                                     <MdEmail size={18} className='-translate-x-5 translate-y-3' />
                                 </div>
                                 {errors.email?.type === "required" && (
@@ -51,13 +51,13 @@ const Login = () => {
                             </div>
                             <div className="form-control space-y-2">
                                 <label className="label">
-                                    <span className="label-text text-lg  font-bold">Password</span>
+                                    <span className="label-text text-lg  font-bold italic">Password</span>
                                 </label>
                                 <div className='flex relative'>
                                     <input
                                     {...register("password", { required: "Password is required" })}
                                     aria-invalid={errors.password ? "true" : "false"}
-                                    type={`${isShow ? "text" : "password"}`} placeholder="Type your password..." className="input border-0 border-b-4 border-l-2 w-72 focus:border-gray-300 focus:border-l-0 appearance-none bg-transparent focus:outline-none placeholder:font-bold focus:border-b-2" />
+                                    type={`${isShow ? "text" : "password"}`} placeholder="* * * * * * * *" className="input border-0 border-b-4 border-l-2 w-72 focus:border-pink-300 focus:border-l-0 appearance-none bg-transparent focus:outline-none placeholder:font-bold focus:border-b-2" />
                                     <div className=''>
                                         {
                                             isShow ? <span onClick={() => setIsShow(!isShow)}>
@@ -74,11 +74,11 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-outline w-full">Login</button>
+                                <button className="btn btn-outline outline-pink-500 hover:bg-pink-400 w-full">Login</button>
                             </div>
                         </form>
                         <div>
-                            <h1 className='text-center -mt-4'>Don't have account?<span className='ml-4 font-bold text-primary hover:underline uppercase'><Link to="/sign-up">Sign Up</Link></span></h1>
+                            <h1 className='text-center -mt-4'>Don't have account?<span className='ml-4 font-bold text-pink-600 hover:underline uppercase'><Link to="/sign-up">Sign Up</Link></span></h1>
                         </div>
                     </div>
                 </div>

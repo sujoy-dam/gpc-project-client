@@ -13,7 +13,7 @@ const MainLayout = () => {
 
     return (
         <div className='max-h-screen container mx-auto'>
-            <header className='bg-base-100 fixed w-full top-0 z-20 p-4 lg:px-10 overflow-x-auto'>
+            <header className='bg-[#F5F5DC] fixed w-full top-0 z-20 p-4 lg:px-10 overflow-x-auto'>
                 <div className='flex justify-end items-center container mx-auto '>
                     <div className='space-x-4'>
                         {
@@ -33,7 +33,7 @@ const MainLayout = () => {
                         </div> */}
 
                     </div>
-                    <button onClick={() => setIsOpen(!isOpen)} className='text-white mr-2 ml-5 btn bg-green-800 outline-2 outline-green-700 z-30'
+                    <button onClick={() => setIsOpen(!isOpen)} className='text-white mr-2 ml-5 btn bg-[#c44f53] outline-2 outline-green-700 z-30'
                     >
                         {
                             isOpen ? <IoCloseSharp size={24} /> : <FaBars size={24} />
@@ -42,7 +42,7 @@ const MainLayout = () => {
                     </button>
                     <div>
                         {
-                            user?.photoURL ? <img src={user?.photoURL} alt="" /> : <FaRegUserCircle size={30} />
+                            user?.photoURL ? <img className='w-10 h-10' src={user?.photoURL} alt="" /> : <FaRegUserCircle size={30} />
                         }
                     </div>
                 </div>

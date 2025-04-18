@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { IoIosPhotos } from 'react-icons/io';
 import Swal from 'sweetalert2';
 
 const JoinCommunitePage = () => {
@@ -12,7 +13,7 @@ const JoinCommunitePage = () => {
 
     const onSubmit = async (data) => {
         console.log(data)
-       
+
         try {
             Swal.fire({
                 title: "Are you sure?",
@@ -37,13 +38,13 @@ const JoinCommunitePage = () => {
                         body: JSON.stringify(data),
                         // ...
                     })
-                    .then(res=>res.json())
-                    .then(data=>{
-                        console.log(data)
-                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                        })
                 }
             });
-            
+
         }
         catch (error) {
             console.log(error)
@@ -70,6 +71,37 @@ const JoinCommunitePage = () => {
                                 <p className="text-red-500 text-sm mt-1">Write your name*</p>
                             )}
                         </div>
+                        {/* photo */}
+                        <div className="form-control col-span-12 md:col-span-6">
+                            <label className="label block text-sm font-medium text-gray-700 mb-1">
+                                <span className="label-text">Photo</span>
+                                <span className="text-red-500">*</span>
+                            </label>
+                            <input {...register("photo", { required: true })} type="file" placeholder="Write your name..." className="input input-bordered w-full" />
+                            {errors.photo && (
+                                <p className="text-red-500 text-sm mt-1">This field is required*</p>
+                            )}
+                        </div>
+                        {/* gender */}
+                        <div className="form-control col-span-12 md:col-span-6">
+                            <label className="label block text-sm font-medium text-gray-700 mb-1">
+                                <span className="label-text">Gender</span>
+                                <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                {...register("gender", { required: true })}
+                                className="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                            >
+                                <option value="">Select an option</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            {errors.gender && (
+                                <p className="text-red-500 text-sm mt-1">Select your gender*</p>
+                            )}
+                        </div>
+                        
                         {/* mobile number */}
                         <div className="form-control col-span-12 md:col-span-6">
                             <label className="block label text-sm font-medium text-gray-700 mb-1">

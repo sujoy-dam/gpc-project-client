@@ -2,7 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-a.active{
-    background-color: #14532D
-    ;
+.sidebar a.active {
+    background-color: #4B5563;
+    border-left: 4px solid white;
+    margin: 0 4px
 }
+
+.bg:hover {
+    background-color: #F5F5DC;
+    color: #111827;
+    /* box-shadow: 2px gray 8px; */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    margin: 0 4px
+}
+
+/* hover:bg-[#F5F5DC] hover:text-gray-900 */

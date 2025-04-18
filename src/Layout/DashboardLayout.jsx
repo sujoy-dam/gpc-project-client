@@ -15,11 +15,11 @@ import AdminDashboardComponent from '../components/Dashboard/AdminDashboard/Admi
 
 const DashboardLayout = () => {
     // const people = true;
-    const status = "admin"
+    // const status = "admin"
     const { isOpen, setIsOpen } = useContext(AuthContext)
     return (
         <div className='flex flex-col justify-center'>
-            <div className={`fixed overflow-y-auto w-20 top-0 z-50 text-white left-0 h-full bg-green-800 transition-width duration-700 ${isOpen ? "w-64" : "w-20"}`}>
+            <div className={`fixed overflow-y-auto w-20 top-0 z-50 text-white left-0 h-full bg-[#c44f53] transition-width duration-700 ${isOpen ? "w-64" : "w-20"}`}>
                 <div className='flex justify-between items-center p-4'>
                     <div className={`flex font-semibold items-center`}>
                         <span className='bg-gray-900 h-10 w-10 rounded-full flex justify-center items-center text-xs text-white font-bold'>GPC</span>
@@ -28,7 +28,8 @@ const DashboardLayout = () => {
                         </p>
                     </div>
                 </div>
-                <nav className='font-semibold'>
+                <hr />
+                <nav className='font-semibold sidebar'>
 
                     {
                         status == "member" && <MemberDashboard />
